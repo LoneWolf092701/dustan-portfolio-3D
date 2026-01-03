@@ -1,0 +1,410 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pure Black & White Noir Theme */
+:root {
+  --noir-black: #000000;
+  --noir-white: #ffffff;
+  --noir-gray: #808080;
+}
+
+/* Custom Scrollbar - Noir BW */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px solid #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ffffff, #808080);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  background: #000000;
+}
+
+/* Body Styles - Pure Black with Film Grain */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Film Grain Effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+/* Vignette Effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Selection Color - Pure White */
+::selection {
+  background-color: #ffffff;
+  color: #000000;
+  text-shadow: none;
+}
+
+/* Hash Span */
+.hash-span {
+  margin-top: -100px;
+  padding-bottom: 100px;
+  display: block;
+}
+
+/* Dramatic White Glow */
+.noir-glow {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Sharp Borders */
+.noir-border {
+  border: 2px solid #ffffff;
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.noir-border-thin {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Elegant Button */
+.noir-button {
+  position: relative;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.noir-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ffffff;
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.noir-button:hover {
+  color: #000000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.noir-button:hover::before {
+  width: 100%;
+}
+
+/* Flicker Effect */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.95; }
+  75% { opacity: 0.97; }
+}
+
+.flicker {
+  animation: flicker 3s infinite;
+}
+
+/* Spotlight Effect */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Classic Noir Card */
+.noir-card {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.9) 0%,
+    rgba(10, 10, 10, 0.9) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.noir-card:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Film Strip Effect */
+.film-strip {
+  position: relative;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #ffffff;
+}
+
+.film-strip::before,
+.film-strip::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  width: 4px;
+  height: 10px;
+  background: #000000;
+}
+
+.film-strip::before {
+  top: 0;
+}
+
+.film-strip::after {
+  bottom: 0;
+}
+
+/* Dramatic Underline */
+.noir-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.noir-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Link Styles */
+a {
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Elegant Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Shadow Text Effect */
+.shadow-text {
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    4px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Light Beam Effect */
+@keyframes light-beam {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.light-beam {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-beam::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: light-beam 3s infinite;
+}
+
+/* Prevent text selection on interactive elements */
+button, .cursor-pointer {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Canvas styles */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+}
+
+.scan-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scan 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+/* Canvas smooth rendering */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Remove default button styles for game UI */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Input styles for contact form */
+input, textarea {
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #00ff00 !important;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
